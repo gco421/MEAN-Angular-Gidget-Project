@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color:#F5928D;
+}
+
+nav{
+font-family: 'Mouse Memoirs', sans-serif;
+}
+
+nav a{
+    text-decoration:none;
+    display: inline-block;
+    color:white;
+    /* vertical-align: middle;  */
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+nav a:hover{
+    color:#2c5e83;
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+h4 {
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+p {
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+h1 {
+    background-color:#F5928D;
+}
+
+ul {
+    background-color:#F5928D;
+}
+
+.items1 h3 {
+    background-color:#B0DE53;
+    color: white;
+    text-align: center;
+  }
+
+.items2 h3 {
+    background-color: #B0DE53;
+    color: white;
+    text-align: center;
+}
+
+.items1 {
+    background-color: #3DB89B;
+    height: 500px;
+}
+
+.items2 {
+    background-color: #3DB89B;
+}
+
+footer {
+    font-family: 'Mouse Memoirs', sans-serif;
+    color: #008575;
+    text-align:center;
+    background-color: #3DB89B;
+}
+

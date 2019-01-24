@@ -1,0 +1,16 @@
+.ckoutnav{
+    font-size:25px;
+    color:white;
+    margin-left: 42%;
+}
+
+.rightnav{
+    font-size: 25px; 
+    margin-left: 10px;
+    vertical-align: right;
+    padding: 10px;
+}
+
+#search{
+    margin-left: 35%;
+}
