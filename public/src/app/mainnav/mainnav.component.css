@@ -1,13 +1,13 @@
 
 .mainnav{
-    font-size: 35px; 
+    font-size: 25px;
     margin-left: 15px;
-    vertical-align: middle;          
-    
+    vertical-align: middle;
+
 }
 
 .rightnav{
-    font-size: 35px; 
+    font-size: 20px;
     /* margin-left: 20px; */
     vertical-align: right;
     padding: 10px;
@@ -24,11 +24,11 @@
     overflow: hidden;
     background-color: #F5928D;
   }
-  
+
   #menu li {
     float: left;
   }
-  
+
   #menu li a {
     display: block;
     color: white;
@@ -36,16 +36,16 @@
     padding: 36px;
     text-decoration: none;
   }
-  
+
   #menu li a:hover {
     background-color: #111111;
   }
-  
+
   #scroller {
     position: relative;
     background-color: #DAF891;
   }
-  
+
   /* For the inner holder, we clip anything that runs over, via "overflow: hidden".  We position the holder to fully fill its parent, the #scroller div. */
   #scroller .innerScrollArea {
     overflow: hidden;
@@ -55,14 +55,14 @@
     top: 0;
     bottom: 0;
   }
-  
+
   /* On the unordered list that holds our photos, we remove the default margin and padding.  We also use "position: relative" so the list items can be laid out in a horizontal row. */
   #scroller ul {
     padding: 0;
     margin: 0;
     position: relative;
   }
-  
+
   /* On the individual list items, we remove the default padding, margin and list bullets.  The position is set to absolute; we'll use JavaScript to set the precise left positioning value. */
   #scroller li {
     padding: 0;

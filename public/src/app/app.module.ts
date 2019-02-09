@@ -12,6 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { CkoutnavComponent } from './ckoutnav/ckoutnav.component';
 import { MainnavComponent } from './mainnav/mainnav.component';
+import { ToolsComponent } from './tools/tools.component';
+import { SolarComponent } from './solar/solar.component';
+import { WindupComponent } from './windup/windup.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { MainnavComponent } from './mainnav/mainnav.component';
     HomeComponent,
     CartComponent,
     CkoutnavComponent,
-    MainnavComponent
+    MainnavComponent,
+    ToolsComponent,
+    SolarComponent,
+    WindupComponent
   ],
   imports: [
     BrowserModule,

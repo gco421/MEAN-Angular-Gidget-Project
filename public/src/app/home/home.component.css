@@ -44,6 +44,11 @@ h3 {
     color: white;
   }
 
+  img {
+    width: 300px;
+    height: 300px;
+  }
+
   /* .items2 h3 {
     background-color: green;
   } */

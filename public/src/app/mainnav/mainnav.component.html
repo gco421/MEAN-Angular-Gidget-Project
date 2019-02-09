@@ -1,25 +1,25 @@
 <nav>
-    <a class="mainnav" target="_blank" rel="noopener" href="">New </a>
+    <a class="mainnav" [routerLink]="['./new']">New </a>
     <a class="mainnav" [routerLink]="['./bestsellers']">Bestsellers</a>
-    <a class="mainnav" target="_blank" rel="noopener" href="">Gifts under $20</a>
-    <a class="mainnav" target="_blank" rel="noopener" href="">Tools & Tech</a>
-    <a class="mainnav" target="_blank" rel="noopener" href="">Solar-Powered</a>
-    <a class="mainnav" target="_blank" rel="noopener" href="">Wind-Up Toys</a>
-    <a id="search" class="rightnav" href="">Search</a> 
-    <a class="rightnav" [routerLink]="['/checkout/cart']">Cart</a> 
+    <a class="mainnav" [routerLink]="['./U20']">Gifts under $20</a>
+    <a class="mainnav" [routerLink]="['./tools']">Tools & Tech</a>
+    <a class="mainnav" [routerLink]="['./solar']">Solar-Powered</a>
+    <a class="mainnav" [routerLink]="['./windup']">Wind-Up Toys</a>
+    <a id="search" class="rightnav" href="">Search</a>
+    <a class="rightnav" [routerLink]="['/checkout/cart']">Cart (3)</a>
 </nav>
 
-  
-<div id="scroller" style="width: 1300px; min-height: 400px; margin: 0 auto; background-image:url(images/Homepage6.png); background-size: 1300px 400px;; background-repeat: no-repeat;">
+
+<div id="scroller" style="width: 100%; min-height: 200px; margin: 0 auto; background-image:url(images/Homepage6.png); background-size: 1500px 200px; background-repeat: no-repeat;">
   <div class="innerScrollArea">
     <ul>
         <!-- Define photos here -->
-        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="361" height="380" /></a></li>
-        <li><a href="somewhere.html"><img src="images/camera_539x400.png" width="539" height="400" /></a></li>
-        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="361" height="380" /></a></li>
-        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="361" height="380" /></a></li>
-        <li><a href="somewhere.html"><img src="images/camera_539x400.png" width="539" height="400" /></a></li>
-        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="361" height="380" /></a></li>
+        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="200" height="200" /></a></li>
+        <li><a href="somewhere.html"><img src="images/camera_539x400.png" width="200" height="200" /></a></li>
+        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="200" height="200" /></a></li>
+        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="200" height="200" /></a></li>
+        <li><a href="somewhere.html"><img src="images/camera_539x400.png" width="200" height="200" /></a></li>
+        <li><a href="somewhere.html"><img src="images/penguin-361x380_large.png" width="200" height="200" /></a></li>
     </ul>
   </div>
 </div>
@@ -27,4 +27,3 @@
 <router-outlet></router-outlet>
 
 <!-- <app-home></app-home> -->
-

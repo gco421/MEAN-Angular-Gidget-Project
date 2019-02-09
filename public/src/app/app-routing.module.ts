@@ -8,15 +8,19 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { CkoutnavComponent } from './ckoutnav/ckoutnav.component';
 import { MainnavComponent } from './mainnav/mainnav.component';
+import { ToolsComponent } from './tools/tools.component';
+import { SolarComponent } from './solar/solar.component';
+import { WindupComponent } from './windup/windup.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'gidget' },
-  { path: 'gidget', component: MainnavComponent, children: 
+  { path: 'gidget', component: MainnavComponent, children:
   [
     { path: '', pathMatch: 'full', redirectTo: 'main' },
      {path: 'main', component: HomeComponent},
-     {path: 'new', component: NewComponent} , {path: 'U20', component: Under20Component}, {path: 'bestsellers', component: BestsellersComponent}
-  ] }, 
+     {path: 'new', component: NewComponent} , {path: 'U20', component: Under20Component}, {path: 'bestsellers', component: BestsellersComponent},
+     {path: 'tools', component: ToolsComponent} , {path: 'solar', component: SolarComponent}, {path: 'windup', component: WindupComponent}
+  ] },
   { path: 'checkout', component:CkoutnavComponent, children: [
     { path: '', pathMatch: 'full', redirectTo: 'cart' },
     {path: 'cart', component: CartComponent}] }
@@ -32,7 +36,7 @@ const routes: Routes = [
 //     { path: 'author/:id', component: AuthorComponent },
 //     { path: 'all/:id', component: AllreviewsComponent }]
 // }
- 
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
