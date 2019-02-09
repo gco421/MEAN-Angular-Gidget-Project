@@ -555,7 +555,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/lg/Documents/CodingDojo/MEAN/gidgets_clickable_true/public/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/gc/G Dropbox/Github-projects/MEAN/MEAN-Angular-Gidget-Project/public/src/styles.css */"./src/styles.css");
 
 
 /***/ })

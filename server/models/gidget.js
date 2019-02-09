@@ -49,7 +49,17 @@ var ProductSchema = new mongoose.Schema({
         minlength: [5, "Description must have at least 5 characters."]
     },
     price: {
-        type: Number
+        type: Number,
+        required: [true, "Please provide a price of the product."],
+
+    },
+    img: {
+        type: String,
+        required: [true, "Please provide the image name of the product."],
+    },
+    category: {
+        type: String,
+        required: [true, "Please provide category"]
     },
     reviews: [ReviewSchema]
 },

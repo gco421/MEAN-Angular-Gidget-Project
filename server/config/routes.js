@@ -3,13 +3,13 @@ var mongoose = require('mongoose'),
     gidgets = require('../controllers/gidgets.js'),
     path = require('path');
 
-    module.export = (app) => {
+    module.exports = (app) => {
         
         app.get('/gidget', gidgets.index);
 
         app.get('/gidget/:id', gidgets.show);
 
-        app.post('/gidget', gidgets.create);
+        app.post('/create', gidgets.create);
 
         app.put('/gidget/:id', gidgets.update);
 

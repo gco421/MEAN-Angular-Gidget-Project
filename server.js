@@ -4,6 +4,7 @@ var express = require("express"),
     bodyParser = require('body-parser'),
     path = require('path'),
     models = require('./server/models/gidget.js'),
+    multer = require('multer'),
     db_connect = require('./server/config/mongoose.js');
 
 app.use(bodyParser.json());
@@ -11,7 +12,8 @@ app.use(express.static(path.join(__dirname, '/public/dist/public')));
 app.use(express.static(path.join(__dirname, './client/static')));
 // All Routes
 // Root Request
-require('./server/config/routes.js')
+require('./server/config/routes.js')(app)
+
 
 // Setting our Server to Listen on Port: 8000
 var server = app.listen(8000, () => {

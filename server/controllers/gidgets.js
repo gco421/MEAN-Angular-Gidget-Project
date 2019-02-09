@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    Product = mongoose.model('Product');
 
 
     module.exports = {
@@ -17,16 +17,21 @@ var mongoose = require('mongoose'),
         },
     
         create: (request, response) => {
-            var resturant = new Resturant({
-                name: request.body.name, cuisine: request.body.cuisine
+            console.log("Entered server")
+            var product = new Product({
+                name: request.body.name, 
+                description: request.body.desc,
+                price: request.body.price,
+                img: request.body.image,
+                category: request.body.category
             });
-            resturant.save((err, resturant) => {
+            product.save((err, product) => {
                 if (err) {
                     console.log('Something went wrong', err.message);
                     response.json(err.errors);
                 }
                 else {
-                    console.log('Successfully added an author!', resturant);
+                    console.log('Successfully added a product!', product);
                 }
             });
         },

@@ -23,6 +23,94 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/add-product/add-product.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/add-product/add-product.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkZC1wcm9kdWN0L2FkZC1wcm9kdWN0LmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/add-product/add-product.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/add-product/add-product.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<button [routerLink]=\"['/']\">Home</button>\n<h1>Add a new product:</h1>\n<form (submit) = \"addProduct()\">\n  <label>Name:</label>\n  <input name=\"name\" type=\"text\" [(ngModel)]=\"product.name\"/>\n  <br>\n  <label>Description:</label>\n  <textarea name=\"desc\" [(ngModel)]=\"product.desc\"></textarea>\n  <br>\n  <label>Price:</label>\n  <input name=\"price\" type=\"number\" min=0 [(ngModel)]=\"product.price\"/>\n  <br>\n  <label>Image:</label>\n  <input type=\"text\" name=\"image\" [(ngModel)]=\"product.image\"/>\n  <br>\n  <label>Category:</label>\n  <select name=\"category\" [(ngModel)]=\"product.category\">\n    <option value=\"new\">New</option>\n    <option value=\"bestsellers\">Bestsellers</option>\n    <option value=\"U20\">Under $20</option>\n    <option value=\"tools\">Tools & Tech</option>\n    <option value=\"solar\">Solar-Powered</option>\n    <option value=\"windup\">Wind-Up Toys</option>\n  </select>\n  <br>\n  <input type = \"submit\" value=\"Submit\"/>\n</form>\n<button [routerLink]=\"['/']\">Cancel</button>\n<div>\n    {{product.name}}\n    {{product.desc}}\n    {{product.price}}\n    {{product.image}}\n    {{product.category}}\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/add-product/add-product.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/add-product/add-product.component.ts ***!
+  \******************************************************/
+/*! exports provided: AddProductComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddProductComponent", function() { return AddProductComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AddProductComponent = /** @class */ (function () {
+    function AddProductComponent(_httpService, _route, _router) {
+        this._httpService = _httpService;
+        this._route = _route;
+        this._router = _router;
+    }
+    AddProductComponent.prototype.ngOnInit = function () {
+        this.product = { name: "", desc: "", price: 0, image: "", category: "" };
+        this.error = '';
+    };
+    AddProductComponent.prototype.addProduct = function () {
+        var _this = this;
+        console.log("Inside addProduct in add-product.component.ts");
+        var observable = this._httpService.addProductService(this.product);
+        observable.subscribe(function (data) {
+            console.log("Subscribe: ", data);
+            if (data != undefined) {
+                _this.error = data;
+            }
+            else {
+                _this.product = { name: "", desc: "", price: 0, image: "", category: "" };
+            }
+        });
+    };
+    AddProductComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-add-product',
+            template: __webpack_require__(/*! ./add-product.component.html */ "./src/app/add-product/add-product.component.html"),
+            styles: [__webpack_require__(/*! ./add-product.component.css */ "./src/app/add-product/add-product.component.css")]
+        }),
+        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AddProductComponent);
+    return AddProductComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -45,6 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tools_tools_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./tools/tools.component */ "./src/app/tools/tools.component.ts");
 /* harmony import */ var _solar_solar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./solar/solar.component */ "./src/app/solar/solar.component.ts");
 /* harmony import */ var _windup_windup_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./windup/windup.component */ "./src/app/windup/windup.component.ts");
+/* harmony import */ var _add_product_add_product_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./add-product/add-product.component */ "./src/app/add-product/add-product.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,13 +152,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: '', pathMatch: 'full', redirectTo: 'gidget' },
     { path: 'gidget', component: _mainnav_mainnav_component__WEBPACK_IMPORTED_MODULE_8__["MainnavComponent"], children: [
             { path: '', pathMatch: 'full', redirectTo: 'main' },
             { path: 'main', component: _home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"] },
             { path: 'new', component: _new_new_component__WEBPACK_IMPORTED_MODULE_2__["NewComponent"] }, { path: 'U20', component: _under20_under20_component__WEBPACK_IMPORTED_MODULE_4__["Under20Component"] }, { path: 'bestsellers', component: _bestsellers_bestsellers_component__WEBPACK_IMPORTED_MODULE_3__["BestsellersComponent"] },
-            { path: 'tools', component: _tools_tools_component__WEBPACK_IMPORTED_MODULE_9__["ToolsComponent"] }, { path: 'solar', component: _solar_solar_component__WEBPACK_IMPORTED_MODULE_10__["SolarComponent"] }, { path: 'windup', component: _windup_windup_component__WEBPACK_IMPORTED_MODULE_11__["WindupComponent"] }
+            { path: 'tools', component: _tools_tools_component__WEBPACK_IMPORTED_MODULE_9__["ToolsComponent"] }, { path: 'solar', component: _solar_solar_component__WEBPACK_IMPORTED_MODULE_10__["SolarComponent"] }, { path: 'windup', component: _windup_windup_component__WEBPACK_IMPORTED_MODULE_11__["WindupComponent"] }, { path: 'addProduct', component: _add_product_add_product_component__WEBPACK_IMPORTED_MODULE_12__["AddProductComponent"] }
         ] },
     { path: 'checkout', component: _ckoutnav_ckoutnav_component__WEBPACK_IMPORTED_MODULE_7__["CkoutnavComponent"], children: [
             { path: '', pathMatch: 'full', redirectTo: 'cart' },
@@ -173,18 +263,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./http.service */ "./src/app/http.service.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _new_new_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./new/new.component */ "./src/app/new/new.component.ts");
-/* harmony import */ var _bestsellers_bestsellers_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./bestsellers/bestsellers.component */ "./src/app/bestsellers/bestsellers.component.ts");
-/* harmony import */ var _under20_under20_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./under20/under20.component */ "./src/app/under20/under20.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _cart_cart_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./cart/cart.component */ "./src/app/cart/cart.component.ts");
-/* harmony import */ var _ckoutnav_ckoutnav_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ckoutnav/ckoutnav.component */ "./src/app/ckoutnav/ckoutnav.component.ts");
-/* harmony import */ var _mainnav_mainnav_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./mainnav/mainnav.component */ "./src/app/mainnav/mainnav.component.ts");
-/* harmony import */ var _tools_tools_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./tools/tools.component */ "./src/app/tools/tools.component.ts");
-/* harmony import */ var _solar_solar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./solar/solar.component */ "./src/app/solar/solar.component.ts");
-/* harmony import */ var _windup_windup_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./windup/windup.component */ "./src/app/windup/windup.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _new_new_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./new/new.component */ "./src/app/new/new.component.ts");
+/* harmony import */ var _bestsellers_bestsellers_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./bestsellers/bestsellers.component */ "./src/app/bestsellers/bestsellers.component.ts");
+/* harmony import */ var _under20_under20_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./under20/under20.component */ "./src/app/under20/under20.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _cart_cart_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./cart/cart.component */ "./src/app/cart/cart.component.ts");
+/* harmony import */ var _ckoutnav_ckoutnav_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ckoutnav/ckoutnav.component */ "./src/app/ckoutnav/ckoutnav.component.ts");
+/* harmony import */ var _mainnav_mainnav_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./mainnav/mainnav.component */ "./src/app/mainnav/mainnav.component.ts");
+/* harmony import */ var _tools_tools_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./tools/tools.component */ "./src/app/tools/tools.component.ts");
+/* harmony import */ var _solar_solar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./solar/solar.component */ "./src/app/solar/solar.component.ts");
+/* harmony import */ var _windup_windup_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./windup/windup.component */ "./src/app/windup/windup.component.ts");
+/* harmony import */ var _add_product_add_product_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./add-product/add-product.component */ "./src/app/add-product/add-product.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -207,31 +299,35 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _new_new_component__WEBPACK_IMPORTED_MODULE_6__["NewComponent"],
-                _bestsellers_bestsellers_component__WEBPACK_IMPORTED_MODULE_7__["BestsellersComponent"],
-                _under20_under20_component__WEBPACK_IMPORTED_MODULE_8__["Under20Component"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"],
-                _cart_cart_component__WEBPACK_IMPORTED_MODULE_10__["CartComponent"],
-                _ckoutnav_ckoutnav_component__WEBPACK_IMPORTED_MODULE_11__["CkoutnavComponent"],
-                _mainnav_mainnav_component__WEBPACK_IMPORTED_MODULE_12__["MainnavComponent"],
-                _tools_tools_component__WEBPACK_IMPORTED_MODULE_13__["ToolsComponent"],
-                _solar_solar_component__WEBPACK_IMPORTED_MODULE_14__["SolarComponent"],
-                _windup_windup_component__WEBPACK_IMPORTED_MODULE_15__["WindupComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _new_new_component__WEBPACK_IMPORTED_MODULE_7__["NewComponent"],
+                _bestsellers_bestsellers_component__WEBPACK_IMPORTED_MODULE_8__["BestsellersComponent"],
+                _under20_under20_component__WEBPACK_IMPORTED_MODULE_9__["Under20Component"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
+                _cart_cart_component__WEBPACK_IMPORTED_MODULE_11__["CartComponent"],
+                _ckoutnav_ckoutnav_component__WEBPACK_IMPORTED_MODULE_12__["CkoutnavComponent"],
+                _mainnav_mainnav_component__WEBPACK_IMPORTED_MODULE_13__["MainnavComponent"],
+                _tools_tools_component__WEBPACK_IMPORTED_MODULE_14__["ToolsComponent"],
+                _solar_solar_component__WEBPACK_IMPORTED_MODULE_15__["SolarComponent"],
+                _windup_windup_component__WEBPACK_IMPORTED_MODULE_16__["WindupComponent"],
+                _add_product_add_product_component__WEBPACK_IMPORTED_MODULE_17__["AddProductComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"]
             ],
             providers: [_http_service__WEBPACK_IMPORTED_MODULE_3__["HttpService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -448,7 +544,7 @@ module.exports = "\r\nh3 {\r\n  font-family: 'Mouse Memoirs', sans-serif;\r\n  }
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"item_container\">\n\n  <div class=\"items1\">\n    <div class=\"new\">\n      <h3>New</h3>\n      <a href=\"somewhere.html\"><img src=\"images/blowfish.png\"/></a>\n      <p>Fish Dryer Buddies</p>\n      <p>$8</p>\n    </div>\n    <div class=\"bestsellers\">\n      <h3>Bestsellers</h3>\n      <a href=\"somewhere.html\"><img src=\"images/luchadors.png\"/></a>\n      <p>Luchador Bottle Openers</p>\n      <p>$8</p>\n    </div>\n    <div class=\"u20\">\n      <h3>Gifts Under $20</h3>\n      <a href=\"somewhere.html\"><img src=\"images/ladybug.png\"/></a>\n      <p>Ladybug Contact Lens Case</p>\n      <p>$5</p>\n    </div>\n  </div>\n\n  <div class=\"items2\">\n    <div class=\"tools_tech\">\n      <h3>Tools & Tech</h3>\n      <a href=\"somewhere.html\"><img src=\"images/swissarmydog.png\"/></a>\n      <p>Animal Multitool</p>\n      <p>$20</p>\n    </div>\n    <div class=\"solar_power\">\n      <h3>Solar-Powered</h3>\n      <a href=\"somewhere.html\"><img src=\"images/thequeens.png\"/></a>\n      <p>Solar Queen</p>\n      <p>$20</p>\n    </div>\n    <div class=\"wind_up\">\n      <h3>Wind-Up Toys</h3>\n      <a href=\"somewhere.html\"><img src=\"images/bug2.png\"/></a>\n      <p>Spinney Wind Up</p>\n      <p>$14</p>\n    </div>\n  </div>\n\n  <footer>Photos Courtesy of Kikkerland Design Inc.</footer>\n\n</div>\n"
+module.exports = "\n<div class=\"item_container\">\n\n  <div class=\"items1\">\n    <div class=\"new\">\n      <h3>New</h3>\n      <a href=\"somewhere.html\"><img src=\"images/blowfish.png\"/></a>\n      <p>Fish Dryer Buddies</p>\n      <p>$8</p>\n    </div>\n    <div class=\"bestsellers\">\n      <h3>Bestsellers</h3>\n      <a href=\"somewhere.html\"><img src=\"images/luchadors.png\"/></a>\n      <p>Luchador Bottle Openers</p>\n      <p>$8</p>\n    </div>\n    <div class=\"u20\">\n      <h3>Gifts Under $20</h3>\n      <a href=\"somewhere.html\"><img src=\"images/ladybug.png\"/></a>\n      <p>Ladybug Contact Lens Case</p>\n      <p>$5</p>\n    </div>\n  </div>\n\n  <div class=\"items2\">\n    <div class=\"tools_tech\">\n      <h3>Tools & Tech</h3>\n      <a href=\"somewhere.html\"><img src=\"images/swissarmydog.png\"/></a>\n      <p>Animal Multitool</p>\n      <p>$20</p>\n    </div>\n    <div class=\"solar_power\">\n      <h3>Solar-Powered</h3>\n      <a href=\"somewhere.html\"><img src=\"images/thequeens.png\"/></a>\n      <p>Solar Queen</p>\n      <p>$20</p>\n    </div>\n    <div class=\"wind_up\">\n      <h3>Wind-Up Toys</h3>\n      <a href=\"somewhere.html\"><img src=\"images/bug2.png\"/></a>\n      <p>Spinney Wind Up</p>\n      <p>$14</p>\n    </div>\n  </div>\n\n  <footer>Photos Courtesy of Kikkerland Design Inc.\n  <br>\n  <br>\n  </footer>\n\n</div>\n"
 
 /***/ }),
 
@@ -504,6 +600,7 @@ var HomeComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpService", function() { return HttpService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -514,14 +611,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var HttpService = /** @class */ (function () {
-    function HttpService() {
+    function HttpService(_http) {
+        this._http = _http;
     }
+    HttpService.prototype.addProductService = function (product) {
+        console.log("In addProductService in http.service.ts");
+        return this._http.post('/create', product);
+    };
     HttpService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], HttpService);
     return HttpService;
 }());
@@ -548,7 +651,7 @@ module.exports = "\n.mainnav{\n    font-size: 25px;\n    margin-left: 15px;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n    <a class=\"mainnav\" [routerLink]=\"['./new']\">New </a>\n    <a class=\"mainnav\" [routerLink]=\"['./bestsellers']\">Bestsellers</a>\n    <a class=\"mainnav\" [routerLink]=\"['./U20']\">Gifts under $20</a>\n    <a class=\"mainnav\" [routerLink]=\"['./tools']\">Tools & Tech</a>\n    <a class=\"mainnav\" [routerLink]=\"['./solar']\">Solar-Powered</a>\n    <a class=\"mainnav\" [routerLink]=\"['./windup']\">Wind-Up Toys</a>\n    <a id=\"search\" class=\"rightnav\" href=\"\">Search</a>\n    <a class=\"rightnav\" [routerLink]=\"['/checkout/cart']\">Cart (3)</a>\n</nav>\n\n\n<div id=\"scroller\" style=\"width: 100%; min-height: 200px; margin: 0 auto; background-image:url(images/Homepage6.png); background-size: 1500px 200px; background-repeat: no-repeat;\">\n  <div class=\"innerScrollArea\">\n    <ul>\n        <!-- Define photos here -->\n        <li><a href=\"somewhere.html\"><img src=\"images/penguin-361x380_large.png\" width=\"200\" height=\"200\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/camera_539x400.png\" width=\"200\" height=\"200\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/penguin-361x380_large.png\" width=\"200\" height=\"200\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/penguin-361x380_large.png\" width=\"200\" height=\"200\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/camera_539x400.png\" width=\"200\" height=\"200\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/penguin-361x380_large.png\" width=\"200\" height=\"200\" /></a></li>\n    </ul>\n  </div>\n</div>\n\n<router-outlet></router-outlet>\n\n<!-- <app-home></app-home> -->\n"
+module.exports = "<nav>\n    <a class=\"mainnav\" [routerLink]=\"['./new']\">New </a>\n    <a class=\"mainnav\" [routerLink]=\"['./bestsellers']\">Bestsellers</a>\n    <a class=\"mainnav\" [routerLink]=\"['./U20']\">Gifts under $20</a>\n    <a class=\"mainnav\" [routerLink]=\"['./tools']\">Tools & Tech</a>\n    <a class=\"mainnav\" [routerLink]=\"['./solar']\">Solar-Powered</a>\n    <a class=\"mainnav\" [routerLink]=\"['./windup']\">Wind-Up Toys</a>\n    <a id=\"search\" class=\"rightnav\" href=\"\">Search</a>\n    <a class=\"rightnav\" [routerLink]=\"['/checkout/cart']\">Cart (3)</a>\n    <a class=\"rightnav\" [routerLink]=\"['./addProduct']\">Add</a>\n</nav>\n\n\n<div id=\"scroller\" style=\"width: 1040px; min-height: 200px; margin: 0 auto; background-image:url(images/Homepage6.png); background-size: 1040px 200px; background-repeat: no-repeat;\">\n  <div class=\"innerScrollArea\">\n    <ul>\n        <!-- Define photos here -->\n        <li><a href=\"somewhere.html\"><img src=\"images/waiter.png\" width=\"186\" height=\"189\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/bug1.png\" width=\"231\" height=\"189\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/penguin-361x380_large.png\" width=\"186\" height=\"189\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/fox_520x400_1024x1024.png\" width=\"173\" height=\"189\" /></a></li>\n        <li><a href=\"somewhere.html\"><img src=\"images/Cactus_Car_Charger_Front_WB_1024x1024.png\" width=\"141\" height=\"189\" /></a></li> \n        <li><a href=\"somewhere.html\"><img src=\"images/crab-multitool_1024x1024.png\" width=\"364\" height=\"189\" /></a></li> \n    </ul>\n  </div>\n</div>\n\n<router-outlet></router-outlet>\n\n<!-- <app-home></app-home> -->\n"
 
 /***/ }),
 
@@ -969,7 +1072,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/lg/Documents/CodingDojo/MEAN/gidgets_clickable_true/public/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/gc/G Dropbox/Github-projects/MEAN/MEAN-Angular-Gidget-Project/public/src/main.ts */"./src/main.ts");
 
 
 /***/ })
