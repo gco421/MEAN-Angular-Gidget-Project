@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-solar',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./solar.component.css']
 })
 export class SolarComponent implements OnInit {
+  solarProducts: any = []
 
-  constructor() { }
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    this.getSolarProducts();
+  }
+
+  getSolarProducts() {
+    let observable = this._httpService.getSolarProductsFromService();
+    observable.subscribe((solarProducts) => {
+      console.log(solarProducts)
+      this.solarProducts = solarProducts;
+    });
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-windup',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./windup.component.css']
 })
 export class WindupComponent implements OnInit {
+  windupProducts: any = []
 
-  constructor() { }
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    this.getWindUpProducts();
+  }
+
+  getWindUpProducts() {
+    let observable = this._httpService.getWindUpProductsFromService();
+    observable.subscribe((windupProducts) => {
+      console.log(windupProducts)
+      this.windupProducts = windupProducts;
+    });
   }
 
 }

@@ -48,14 +48,9 @@ ul {
     text-align: center;
 }
 
-.items1 {
+.item_container {
     background-color: #3DB89B;
-    height: 500px;
-}
-
-.items2 {
-    background-color: #3DB89B;
-}
+  }
 
 footer {
     font-family: 'Mouse Memoirs', sans-serif;
