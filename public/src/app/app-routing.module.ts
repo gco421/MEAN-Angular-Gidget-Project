@@ -11,7 +11,6 @@ import { MainnavComponent } from './mainnav/mainnav.component';
 import { ToolsComponent } from './tools/tools.component';
 import { SolarComponent } from './solar/solar.component';
 import { WindupComponent } from './windup/windup.component';
-import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'gidget' },
@@ -20,7 +19,7 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'main' },
      {path: 'main', component: HomeComponent},
      {path: 'new', component: NewComponent} , {path: 'U20', component: Under20Component}, {path: 'bestsellers', component: BestsellersComponent},
-     {path: 'tools', component: ToolsComponent} , {path: 'solar', component: SolarComponent}, {path: 'windup', component: WindupComponent}, {path: 'addProduct', component: AddProductComponent}
+     {path: 'tools', component: ToolsComponent} , {path: 'solar', component: SolarComponent}, {path: 'windup', component: WindupComponent}
   ] },
   { path: 'checkout', component:CkoutnavComponent, children: [
     { path: '', pathMatch: 'full', redirectTo: 'cart' },
