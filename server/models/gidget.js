@@ -49,12 +49,27 @@ var ProductSchema = new mongoose.Schema({
         minlength: [5, "Description must have at least 5 characters."]
     },
     price: {
-        type: Number
+        type: Number,
+        required: [true, "Please provide a price of the product."],
+
+    },
+    img: {
+        type: String,
+        required: [true, "Please provide the image name of the product."],
+    },
+    category: {
+        type: String,
+        required: [true, "Please provide category"]
     },
     reviews: [ReviewSchema]
 },
 {timestamps: true});
 
+var CartSchema = new mongoose.Schema ({
+    items: [ProductSchema]
+})
+
 mongoose.model('Product', ProductSchema);
 mongoose.model('Review', ReviewSchema);
 mongoose.model('User', UserSchema);
+mongoose.model('Cart', CartSchema);

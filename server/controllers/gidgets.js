@@ -1,39 +1,45 @@
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    Product = mongoose.model('Product');
+    Cart = mongoose.model('Cart');
 
 
     module.exports = {
-        index: (request, response) => {
-            User.find({}, (err, users) => {
+        index: (req, res) => {
+            Product.find({}, (err, products) => {
                 if (err) {
                     console.log(err);
-                    response.status(400).json(err.errors)
+                    res.status(400).json(err.errors)
                 }
                 else {
-                    console.log(resturants)
-                    response.json(resturants);
+                    console.log(products)
+                    res.json(products);
                 }
             });
         },
     
         create: (request, response) => {
-            var resturant = new Resturant({
-                name: request.body.name, cuisine: request.body.cuisine
+            console.log("Entered server")
+            var product = new Product({
+                name: request.body.name, 
+                description: request.body.desc,
+                price: request.body.price,
+                img: request.body.image,
+                category: request.body.category
             });
-            resturant.save((err, resturant) => {
+            product.save((err, product) => {
                 if (err) {
                     console.log('Something went wrong', err.message);
                     response.json(err.errors);
                 }
                 else {
-                    console.log('Successfully added an author!', resturant);
+                    console.log('Successfully added an author!', product);
                 }
             });
         },
     
         show: (request, response) => {
             console.log("The task id requested is:", request.params.id);
-            Resturant.findOne({ _id: request.params.id }, (err, resturant) => {
+            Product.findOne({ _id: request.params.id }, (err, resturant) => {
                 if (err) {
                     console.log(err);
                     response.status(400).json(err.errors);
@@ -44,62 +50,6 @@ var mongoose = require('mongoose'),
                 }
             });
         },
-    
-        update: (request, response) => {
-            console.log('The task id requested is:', request.params.id);
-            Resturant.update({ _id: request.params.id }, {
-                name: request.body.name,
-                cuisine: request.body.cuisine
-            }, (err, resturant) => {
-                if (err) {
-                    console.log('There was an error', err);
-                    response.status(400).json(err.errors);
-                }
-                else {
-                    console.log('Successfully edited an author!')
-                    response.json(resturant);
-                }
-            });
-        },
-    
-        destroy: (request, response) => {
-            console.log('The task id requested is:', request.params.id);
-            Resturant.remove({ _id: request.params.id }, (err, resturant) => {
-                if (err) {
-                    console.log(err)
-                }
-                else {
-                    console.log('Author has successfully been removed!')
-                    response.json(resturant)
-                }
-            });
-        },
-    
-        find: (req, res) => {
-        Resturant.findById({_id: req.params.id},
-        function(err, resturant) {
-        // if there is an error console.log that something went wrong!
-        if(err){
-            console.log('Something went wrong', err);
-            res.json({message: "Something went wrong", error: err});
-        } else { // else console.log that we did well and then display on the index
-            res.json(resturant);
-        }
-        })
-      },
-    
-      findReview: (req, res) => {
-      Resturant.findById({_id: req.params.id},
-      function(err, resturant) {
-      // if there is an error console.log that something went wrong!
-      if(err){
-          console.log('Something went wrong', err);
-          res.json({message: "Something went wrong", error: err});
-      } else { // else console.log that we did well and then display on the index
-          res.json(resturant['review']);
-      }
-      })
-    },
     
       addreview: (req, res) => {
         Review.create(req.body, (err, data) => {
@@ -123,8 +73,132 @@ var mongoose = require('mongoose'),
             })
         }
       }
-      )}
+      )},
 
+      getTools: (req, res) => {
+        Product.find({ category: "tools"}, (err, products) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log(products)
+                res.json(products);
+            }
+        });
+      },
+
+      getBestsellers: (req, res) => {
+        Product.find({ category: "bestsellers"}, (err, products) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log(products)
+                res.json(products);
+            }
+        });
+      },
+
+      getNew: (req, res) => {
+        Product.find({ category: "new"}, (err, products) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log(products)
+                res.json(products);
+            }
+        });
+      },
+
+      getSolars: (req, res) => {
+        Product.find({ category: "solar"}, (err, products) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log(products)
+                res.json(products);
+            }
+        });
+      },
+
+      getU20s: (req, res) => {
+        Product.find({ category: "U20"}, (err, products) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log(products)
+                res.json(products);
+            }
+        });
+      },
+
+      getWindups: (req, res) => {
+        Product.find({ category: "windup"}, (err, products) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log(products)
+                res.json(products);
+            }
+        });
+      },
+
+      addToCart: (req, res) => {
+        //console.log("Server")
+        //Product.findById({_id: req.params.id},(err, product) => {
+            //Product.create(product, (err, data) => {
+                //console.log("This is data: ", data);
+                //Cart.find({status: "use"}, (err, cart) => {
+                    //cart.push(product);
+                    //console.log("This is cart: ",cart)
+                //})
+            //})      
+        //})
+        console.log("Inside: ", req.body)
+        var quanity = 1;
+        var userId = 1;
+        var productId = req.body._id;
+        Cart.update({
+        $push: {
+            items: {
+                _id: productId,
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                img: req.body.img,
+                category: req.body.category
+                }
+            }
+        }, (err, cart) => {
+            console.log("THIS IS CART: ", cart);
+            console.log("THIS IS ERROR: ", err);
+        });
+        console.log("Outside")
+    },
+
+    getCart: (req, res) => {
+        Cart.find({}, (err, cart) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log("This is cart: ", cart[0].items)
+                res.json(cart[0].items);
+            }
+        });
     }
+    
+}
     
     
