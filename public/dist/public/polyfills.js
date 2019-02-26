@@ -5497,8 +5497,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/gc/G Dropbox/2018-MacLaptop/CodingDojo/Projects/Gidget/MEAN-Angular-Gidget-Project-master-2019-02-13/public/src/polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! /Users/gc/G Dropbox/2018-MacLaptop/CodingDojo/Projects/Gidget/MEAN-Angular-Gidget-Project-master-2019-02-13/public/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+__webpack_require__(/*! /Users/lg/Documents/CodingDojo/MEAN/MEAN-Angular-Gidget-Project/public/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /Users/lg/Documents/CodingDojo/MEAN/MEAN-Angular-Gidget-Project/public/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
 
 /***/ })

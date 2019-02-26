@@ -7,14 +7,15 @@
 }
 
 .rightnav{
+    float: right;
     font-size: 20px;
     /* margin-left: 20px; */
     vertical-align: right;
-    padding: 10px;
+    padding: 5px;
 }
 
 #search{
-    margin-left: 300px;
+    margin-left: 5px;
 }
 
 #menu ul {

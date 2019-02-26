@@ -13,20 +13,31 @@ import { SolarComponent } from './solar/solar.component';
 import { WindupComponent } from './windup/windup.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { SearchComponent } from './search/search.component';
+import { WriteReviewComponent } from './write-review/write-review.component';
+import { PaymentComponent } from './payment/payment.component';
+import { RevieworderComponent } from './revieworder/revieworder.component';
+import { OrderplacedComponent } from './orderplaced/orderplaced.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'gidget' },
   { path: 'gidget', component: MainnavComponent, children:
   [
     { path: '', pathMatch: 'full', redirectTo: 'main' },
-     {path: 'main', component: HomeComponent},
+     {path: 'main', component: HomeComponent, children:
+    [
+      {path: 'search', component: SearchComponent}
+    ]},
      {path: 'new', component: NewComponent} , {path: 'U20', component: Under20Component}, {path: 'bestsellers', component: BestsellersComponent},
      {path: 'tools', component: ToolsComponent} , {path: 'solar', component: SolarComponent}, {path: 'windup', component: WindupComponent}, 
-     {path: 'addProduct', component: AddProductComponent}, {path: 'details/:id', component: ProductDetailsComponent}
+     {path: 'addProduct', component: AddProductComponent}, {path: 'details/:id', component: ProductDetailsComponent}, {path: 'search', component: SearchComponent},
+     {path: 'addreview', component: WriteReviewComponent}
   ] },
   { path: 'checkout', component:CkoutnavComponent, children: [
     { path: '', pathMatch: 'full', redirectTo: 'cart' },
-    {path: 'cart', component: CartComponent}] }
+    {path: 'cart', component: CartComponent}, {path: 'payment', component: PaymentComponent}, {path: 'revieworder', component: RevieworderComponent},
+    {path: 'orderplaced', component: OrderplacedComponent}] }
   ]
 
   // { path: 'gidget/new', component: NewComponent },

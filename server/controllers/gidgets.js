@@ -5,31 +5,40 @@ var mongoose = require('mongoose'),
 
     module.exports = {
         index: (req, res) => {
+            //if(!req.sessionID){
+                //console.log("Created Session ID:", req.sessionID)
+            //}
+            //else {
+                //console.log("SessionID already exists:",req.sessionID)
+            //}
+            var user = 1;
             Product.find({}, (err, products) => {
                 if (err) {
                     console.log(err);
                     res.status(400).json(err.errors)
                 }
                 else {
-                    console.log(products)
+                    //console.log(products)
                     res.json(products);
                 }
             });
         },
     
-        create: (request, response) => {
+        create: (req, res) => {
             console.log("Entered server")
             var product = new Product({
-                name: request.body.name, 
-                description: request.body.desc,
-                price: request.body.price,
-                img: request.body.image,
-                category: request.body.category
+                name: req.body.name, 
+                description: req.body.desc,
+                price: req.body.price,
+                quanity: req.body.quanity,
+                category: req.body.category,
+                img1: req.body.img1,
+                search: req.body.search
             });
             product.save((err, product) => {
                 if (err) {
                     console.log('Something went wrong', err.message);
-                    response.json(err.errors);
+                    res.json(err.errors);
                 }
                 else {
                     console.log('Successfully added an author!', product);
@@ -37,46 +46,21 @@ var mongoose = require('mongoose'),
             });
         },
     
-        show: (request, response) => {
-            console.log("The task id requested is:", request.params.id);
-            Product.findOne({ _id: request.params.id }, (err, resturant) => {
-                if (err) {
-                    console.log(err);
-                    response.status(400).json(err.errors);
+        show: (req, res) => {
+            Product.findById({_id: req.params.id}, (err, product) => {
+                if(err) {
+                    console.log('Something went wrong', err);
+                    res.json(err.errors);
                 }
                 else {
-                    console.log(resturant);
-                    response.json(resturant);
+                    res.json(product);
                 }
-            });
+            })
+            
         },
     
-      addreview: (req, res) => {
-        Review.create(req.body, (err, data) => {
-          if (err){
-            res.json(err.errors)
-          }
-          else {
-            Resturant.findOneAndUpdate({_id: req.params.id}, {$push: {review: data}}, (err, data) =>{
-              if (req.body.name < 4){
-                res.json(err.errors)
-              }
-              else if (req.body.star == undefined) {
-                res.json(err.errors)
-              }
-              else if (req.body.review < 4) {
-                res.json(err.errors)
-              }
-              else{
-                console.log("Success pt2.")
-              }
-            })
-        }
-      }
-      )},
-
       getTools: (req, res) => {
-        Product.find({ category: "tools"}, (err, products) => {
+        Product.find({ category: "tools & tech"}, (err, products) => {
             if (err) {
                 console.log(err);
                 res.status(400).json(err.errors)
@@ -115,7 +99,7 @@ var mongoose = require('mongoose'),
       },
 
       getSolars: (req, res) => {
-        Product.find({ category: "solar"}, (err, products) => {
+        Product.find({ category: "solar-powered"}, (err, products) => {
             if (err) {
                 console.log(err);
                 res.status(400).json(err.errors)
@@ -128,7 +112,7 @@ var mongoose = require('mongoose'),
       },
 
       getU20s: (req, res) => {
-        Product.find({ category: "U20"}, (err, products) => {
+        Product.find({ category: "u20"}, (err, products) => {
             if (err) {
                 console.log(err);
                 res.status(400).json(err.errors)
@@ -141,7 +125,7 @@ var mongoose = require('mongoose'),
       },
 
       getWindups: (req, res) => {
-        Product.find({ category: "windup"}, (err, products) => {
+        Product.find({ category: "wind-up"}, (err, products) => {
             if (err) {
                 console.log(err);
                 res.status(400).json(err.errors)
@@ -151,6 +135,21 @@ var mongoose = require('mongoose'),
                 res.json(products);
             }
         });
+      },
+
+      createCart: (req, res) => {
+            var cart = new Cart({
+                userID: 1
+            });
+            cart.save((err, product) => {
+                if (err) {
+                    console.log('Something went wrong', err.message);
+                    res.json(err.errors);
+                }
+                else {
+                    console.log('Successfully added an author!', product);
+                }
+            });
       },
 
       addToCart: (req, res) => {
@@ -164,41 +163,126 @@ var mongoose = require('mongoose'),
                 //})
             //})      
         //})
-        console.log("Inside: ", req.body)
-        var quanity = 1;
-        var userId = 1;
+        //console.log("Inside: ",req.body.quanity)
+        var user = 1;
         var productId = req.body._id;
-        Cart.update({
-        $push: {
-            items: {
-                _id: productId,
-                name: req.body.name,
-                description: req.body.description,
-                price: req.body.price,
-                img: req.body.img,
-                category: req.body.category
-                }
-            }
-        }, (err, cart) => {
-            console.log("THIS IS CART: ", cart);
-            console.log("THIS IS ERROR: ", err);
+        // Cart.find({userID: user}, (err, found) => {
+        //     var duplicateCheck = found[0].items[0].name;
+        //     console.log("Found:",duplicateCheck)
+        //     if(duplicateCheck == req.body.name) {
+        //         console.log("Matched!")
+        //         Cart.update({userID: user},
+        //             {$inc: {
+        //                 items: {
+        //                     quanity: req.body.quanity
+        //                 }
+        //             }
+        //         });
+        //     }
+        //     else {
+                console.log("Not Matched",req.body.name)
+                Cart.update({
+                userID: user},
+                { $set: { userID: user },
+                $push: {
+                    items: {
+                        _id: productId,
+                        name: req.body.name,
+                        description: req.body.description,
+                        price: req.body.price,
+                        image: req.body.images[0],
+                        category: req.body.category,
+                        quanity: req.body.quanity
+                        }
+                    }
+                }, (err, cart) => {
+                    console.log("THIS IS CART: ", cart);
+                    console.log("THIS IS ERROR: ", err);
         });
-        console.log("Outside")
+            // }
+        // })
+        
     },
 
     getCart: (req, res) => {
-        Cart.find({}, (err, cart) => {
+        var user = 1;
+        Cart.find({userID: user}, (err, cart) => {
             if (err) {
                 console.log(err);
                 res.status(400).json(err.errors)
             }
             else {
-                console.log("This is cart: ", cart[0].items)
+                console.log("This is cart: ", cart)
                 res.json(cart[0].items);
             }
         });
-    }
+    },
+
+    search: (req, res) => {
+        //console.log("Search in server",req.body)
+        var searchTerm = req.body.input.toLowerCase();
+        console.log("Seaching: ", searchTerm);
+        Product.find({search: searchTerm}, (err, search) => {
+            if (err) {
+                console.log(err);
+                res.status(400).json(err.errors)
+            }
+            else {
+                console.log("Found:",search)
+                res.json(search)
+            }
+        })
+    },
+
+    addReview: (req, res) => {
+        console.log("Review:",req.body)
+        console.log("Review ID:",req.params.id)
+        Product.findByIdAndUpdate({_id: req.params.id},
+            {$push:
+            {reviews: 
+                {
+                    name: req.body.name,
+                    rating: req.body.rating,
+                    review: req.body.review
+            }}}, (err, review) => {
+                if(err) {
+                    console.timeLog(err)
+                }
+                else {
+                    console.log("Successfully added review:", review)
+                }
+            }
+        );
+    },
+
+    submitOrder: (req, res) => {
+        var user = 1;
+        Cart.update({userID: user}, 
+            {$set: {items: []}}, (err, product) => {
+            if(err) {
+                console.log(err)
+            }
+            else {
+                console.log("Successfully deleted")
+            }
+        })
+    },
     
+    deleteFromCart: (req, res) => {
+        var user = 1;
+        console.log("deleteFromCart:",req.body)
+        Cart.update(
+            {userID: user},
+            {$pull: {"items": {_id: req.params.id}}}, (err, deleted) => {
+                if(err) {
+                    console.log(err)
+                }
+                else {
+                    console.log("Successfully deleted")
+                }
+            }
+        );
+    }
 }
     
     

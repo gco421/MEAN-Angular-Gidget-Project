@@ -1,15 +1,18 @@
 var mongoose = require('mongoose');
 
 var ReviewSchema = new mongoose.Schema({
-    content: {
+    name: {
         type: String,
-        required: [true, "Please provide a review before submitting"],
-        minlength: [5, "Your review must contain at least 5 characters"]
+        required: [true, "Please input your name."]
     },
-    star: {
+    rating: {
         type: Number,
         required: [true, "Please provide a star rating."]
-    }
+    },
+    review: {
+        type: String,
+        minlength: [5, "Your review must contain at least 5 characters"]
+    },
 },
 {timestamp: true});
 
@@ -39,35 +42,29 @@ var UserSchema = new mongoose.Schema({
 
 var ProductSchema = new mongoose.Schema({
     name: {
-        type: String,
-        required: [true, "Please enter the name of the product"],
-        minlength: [3, "Product name must be at least 3 characters."]
+        type: String
     },
     description: {
-        type: String,
-        required: [true, "Please provide a description of the product."],
-        minlength: [5, "Description must have at least 5 characters."]
+        type: String
     },
     price: {
-        type: Number,
-        required: [true, "Please provide a price of the product."],
-
-    },
-    img: {
-        type: String,
-        required: [true, "Please provide the image name of the product."],
+        type: Number
     },
     category: {
-        type: String,
-        required: [true, "Please provide category"]
+        type: String
     },
+    images: [],
+    search: [],
     reviews: [ReviewSchema]
-},
+    },
 {timestamps: true});
 
 var CartSchema = new mongoose.Schema ({
-    items: [ProductSchema]
-})
+    userID: {
+        type: Number
+    },
+    items: []
+});
 
 mongoose.model('Product', ProductSchema);
 mongoose.model('Review', ReviewSchema);

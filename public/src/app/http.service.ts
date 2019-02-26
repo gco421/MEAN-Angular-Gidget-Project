@@ -38,11 +38,41 @@ export class HttpService {
     return this._http.get('/new');
   }
 
-  addToCartFromService(id, toolProduct) {
-    return this._http.post('/addToCart/' + id, toolProduct);
+  addToCartFromService(id, product, quanity) {
+    console.log("In Service",quanity)
+    return this._http.post('/addToCart/' + id, product, quanity);
+    //return this._http.get('/createCart')
   }
 
   getCartFromService() {
     return this._http.get('/getCart');
+  }
+  
+  getSearchFromService(input) {
+    console.log("Service search: ", input)
+    return this._http.post('/searchQuery', {input});
+  }
+
+  findProductFromService(id) {
+    return this._http.get('/gidget/' + id);
+  }
+
+  addReviewFromService(review, id) {
+    console.log("Servive Review:",review)
+    return this._http.post('/addreview/' + id, review)
+  }
+
+  submitOrderFromService() {
+    return this._http.get('/submitOrder');
+  }
+
+  deleteCartFromService(item) {
+    console.log("ID in service:",item._id)
+    return this._http.post('/deleteitem/' + item._id, item)
+  }
+
+  // temporary
+  createACartFromService() {
+    return this._http.get('/createCart');
   }
 }

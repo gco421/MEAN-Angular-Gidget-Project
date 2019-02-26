@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tools',
@@ -9,7 +10,8 @@ import { HttpService } from '../http.service';
 export class ToolsComponent implements OnInit {
   toolProducts: any = []
 
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getToolProducts();
@@ -21,12 +23,5 @@ export class ToolsComponent implements OnInit {
       console.log(toolProducts)
       this.toolProducts = toolProducts;
     });
-  }
-
-  addToCart(id, toolProduct) {
-    let observable = this._httpService.addToCartFromService(id, toolProduct);
-    observable.subscribe((data) => {
-      console.log(data)
-    })
   }
 }

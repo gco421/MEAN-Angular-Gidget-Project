@@ -23,6 +23,13 @@ var mongoose = require('mongoose'),
         // Shopping cart logic
         app.post('/addToCart/:id', gidgets.addToCart);
         app.get('/getCart', gidgets.getCart);
+        app.get('/createCart', gidgets.createCart);
+        app.get('/submitOrder', gidgets.submitOrder);
+        app.post('/deleteitem/:id', gidgets.deleteFromCart)
+
+        app.post('/searchQuery', gidgets.search);
+
+        app.post('/addreview/:id', gidgets.addReview);
 
         app.all("*", (req, res, next) => {
             res.sendFile(path.resolve("./public/dist/public/index.html"))

@@ -17,9 +17,16 @@ export class CartComponent implements OnInit {
 
   getCart() {
     let observable = this._httpService.getCartFromService();
-    observable.subscribe((cart) => {
+    observable.subscribe(cart => {
       console.log(cart);
       this.cart = cart;
+    });
+  }
+
+  deleteCart(item) {
+    let observable = this._httpService.deleteCartFromService(item);
+    observable.subscribe(deleted => {
+      console.log(deleted);
     });
   }
 

@@ -1,47 +1,13 @@
-<div class="item_container">
-
-  <div class="items1">
-    <div class="new">
-      <h3>New</h3>
-      <a href="somewhere.html"><img src="images/blowfish.png"/></a>
-      <p>Fish Dryer Buddies</p>
-      <p>$8</p>
-    </div>
-    <div class="bestsellers">
-      <h3>Bestsellers</h3>
-      <a href="somewhere.html"><img src="images/luchadors.png"/></a>
-      <p>Luchador Bottle Openers</p>
-      <p>$8</p>
-    </div>
-    <div class="u20">
-      <h3>Gifts Under $20</h3>
-      <a href="somewhere.html"><img src="images/ladybug.png"/></a>
-      <p>Ladybug Contact Lens Case</p>
-      <p>$5</p>
-    </div>
+<div class="item_container" >
+    <div class="item" *ngFor='let item of u20Products'>
+      <h2 class="name">{{item.name}}</h2>
+        <a [routerLink]="['../details/' + item._id]">
+          <img src="products/{{item.images[0]}}">
+        </a>
+      <h2>${{item.price}}</h2>
+    </div>  
   </div>
-
-  <div class="items2">
-    <div class="tools_tech">
-      <h3>Tools & Tech</h3>
-      <a href="somewhere.html"><img src="images/swissarmydog.png"/></a>
-      <p>Animal Multitool</p>
-      <p>$20</p>
-    </div>
-    <div class="solar_power">
-      <h3>Solar-Powered</h3>
-      <a href="somewhere.html"><img src="images/thequeens.png"/></a>
-      <p>Solar Queen</p>
-      <p>$20</p>
-    </div>
-    <div class="wind_up">
-      <h3>Wind-Up Toys</h3>
-      <a href="somewhere.html"><img src="images/bug2.png"/></a>
-      <p>Spinney Wind Up</p>
-      <p>$14</p>
-    </div>
-  </div>
-
+  
   <footer>Photos Courtesy of Kikkerland Design Inc.</footer>
-
-</div>
+  
+  

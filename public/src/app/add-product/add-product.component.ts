@@ -17,7 +17,15 @@ export class AddProductComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
-    this.product = {name: "", desc: "", price: 0, image: "", category: ""}
+    this.product = {
+      name: "",
+      desc: "",
+      price: 0,
+      quanity: 0,
+      category: "",
+      img1: "",
+      search: ""
+    }
     this.error = '';
   }
 
